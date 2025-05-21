@@ -54,7 +54,6 @@ public class TiendaController {
     // Endpoints para las funcionalidades específicas (establecer horarios, asignar/sacar políticas)
     @PutMapping("/{id}/hora-entrada")
     public ResponseEntity<Tienda> establecerHoraEntrada(@PathVariable int id, @RequestBody String horaEntrada) {
-        // Aquí deberías convertir la String horaEntrada a un tipo Date o LocalTime adecuado
         // y llamar al método del servicio
         return ResponseEntity.ok().build(); // Placeholder
     }
@@ -65,7 +64,7 @@ public class TiendaController {
         return ResponseEntity.ok().build(); // Placeholder
     }
 
-   /*  @PostMapping("/{tiendaId}/politicas/{politicaId}")
+    @PostMapping("/{tiendaId}/politicas/{politicaId}")
     public ResponseEntity<Tienda> asignarPolitica(@PathVariable int tiendaId, @PathVariable int politicaId) {
         Optional<Tienda> tienda = tiendaService.asignarPolitica(tiendaId, politicaId);
         return tienda.map(ResponseEntity::ok)
@@ -77,5 +76,5 @@ public class TiendaController {
         Optional<Tienda> tienda = tiendaService.sacarPolitica(tiendaId, politicaId);
         return tienda.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
-    }*/
+    }
 }

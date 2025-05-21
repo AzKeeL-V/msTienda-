@@ -1,7 +1,10 @@
 package com.gestionTienda.msTienda.service;
 
+import com.gestionTienda.msTienda.model.PoliticaEmpresa;
 import com.gestionTienda.msTienda.model.Tienda;
-import com.gestionTienda.msTienda.repository.TiendaRepository; // Asegúrate de importar el repositorio
+import com.gestionTienda.msTienda.repository.PoliticaRepository; // Cambiado el nombre a PoliticaRepository
+import com.gestionTienda.msTienda.repository.TiendaRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +15,38 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class TiendaService {
 
-    private final TiendaRepository tiendaRepository; // Inyecta el repositorio usando Lombok
+    private final TiendaRepository tiendaRepository;
+    private final PoliticaRepository politicaRepository; // Inyecta el PoliticaRepository
+
+    @Transactional
+    public Optional<Tienda> asignarPolitica(int tiendaId, int politicaId) {
+        Optional<Tienda> tiendaOptional = tiendaRepository.findById(tiendaId);
+        Optional<PoliticaEmpresa> politicaOptional = politicaRepository.findById(politicaId);
+
+        if (tiendaOptional.isPresent() && politicaOptional.isPresent()) {
+            Tienda tienda = tiendaOptional.get();
+            PoliticaEmpresa politica = politicaOptional.get();
+            tienda.getListaPoliticas().add(politica);
+            return Optional.of(tiendaRepository.save(tienda));
+        } else {
+            return Optional.empty();
+        }
+    }
+
+    @Transactional
+    public Optional<Tienda> sacarPolitica(int tiendaId, int politicaId) {
+        Optional<Tienda> tiendaOptional = tiendaRepository.findById(tiendaId);
+        Optional<PoliticaEmpresa> politicaOptional = politicaRepository.findById(politicaId);
+
+        if (tiendaOptional.isPresent() && politicaOptional.isPresent()) {
+            Tienda tienda = tiendaOptional.get();
+            PoliticaEmpresa politica = politicaOptional.get();
+            tienda.getListaPoliticas().remove(politica);
+            return Optional.of(tiendaRepository.save(tienda));
+        } else {
+            return Optional.empty();
+        }
+    }
 
     public List<Tienda> listarTiendas() {
         return tiendaRepository.findAll();

@@ -1,0 +1,10 @@
+INSERT INTO politicas_empresa (descripcion) VALUES ('Política de devoluciones: Se aceptan devoluciones dentro de los 30 días con comprobante de compra.');
+INSERT INTO politicas_empresa (descripcion) VALUES ('Política de envíos: Envíos gratuitos para compras superiores a $50.000.');
+INSERT INTO politicas_empresa (descripcion) VALUES ('Política de garantía: Todos los productos tienen una garantía de 6 meses por defectos de fabricación.');
+INSERT INTO politicas_empresa (descripcion) VALUES ('Política de privacidad: Los datos de los clientes se utilizan únicamente para procesar pedidos y mejorar la experiencia de compra.');
+INSERT INTO politicas_empresa (descripcion) VALUES ('Política de precios: Los precios están sujetos a cambios sin previo aviso.');
+INSERT INTO politicas_empresa (descripcion) VALUES ('Política de stock: El stock de productos está sujeto a disponibilidad.');
+INSERT INTO politicas_empresa (descripcion) VALUES ('Política de atención al cliente: Nuestro horario de atención es de lunes a viernes de 9:00 a 18:00.');
+INSERT INTO politicas_empresa (descripcion) VALUES ('Política de seguridad: Nuestro sitio web cuenta con certificado SSL para proteger la información de los usuarios.');
+INSERT INTO politicas_empresa (descripcion) VALUES ('Política de pagos: Aceptamos tarjetas de crédito, débito y transferencias bancarias.');
+INSERT INTO politicas_empresa (descripcion) VALUES ('Política de facturación: Las facturas se envían por correo electrónico una vez que el pedido ha sido procesado.');
