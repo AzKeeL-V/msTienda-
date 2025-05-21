@@ -71,10 +71,11 @@ public class TiendaController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/{tiendaId}/politicas/{politicaId}")
-    public ResponseEntity<Tienda> sacarPolitica(@PathVariable int tiendaId, @PathVariable int politicaId) {
-        Optional<Tienda> tienda = tiendaService.sacarPolitica(tiendaId, politicaId);
-        return tienda.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
-    }
+    @DeleteMapping("/{idTienda}/politicas/{idPolitica}")
+    public ResponseEntity<?> eliminarPoliticaDeTienda(@PathVariable Integer idTienda,
+                                                  @PathVariable Integer idPolitica) {
+    tiendaService.sacarPolitica(idTienda, idPolitica);
+    return ResponseEntity.ok("Política eliminada de la tienda correctamente.");
+}
+
 }

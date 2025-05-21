@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
-import java.util.Date;
+import java.time.LocalTime; // ¡Importa esto!
 import java.util.List;
 
 @Entity
@@ -21,11 +21,8 @@ public class Tienda {
 
     private String nomTienda;
     private String dirTienda;
-    @Temporal(TemporalType.TIME)
-    private Date horaEntrada;
-    @Temporal(TemporalType.TIME)
-    private Date horaSalida;
-
+    private LocalTime horaEntrada; 
+    private LocalTime horaSalida;  
     @ManyToMany
     @JoinTable(
             name = "tienda_politica",
@@ -33,6 +30,4 @@ public class Tienda {
             inverseJoinColumns = @JoinColumn(name = "politica_id")
     )
     private List<PoliticaEmpresa> listaPoliticas;
-
 }
-
